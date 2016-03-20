@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>围棋的所有可能数361！的计算 | 特立读行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="计算结果：361! ≈ 1.4379*10^768">
+<meta property="og:type" content="article">
+<meta property="og:title" content="围棋的所有可能数361！的计算">
+<meta property="og:url" content="http://cncoffer.com/2016/03/20/c-c++/围棋的所有可能数361！的计算/index.html">
+<meta property="og:site_name" content="特立读行">
+<meta property="og:description" content="计算结果：361! ≈ 1.4379*10^768">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F361!%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97.png">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F361!%E5%A4%A7%E6%95%B0%E7%B1%BB2.png">
+<meta property="og:updated_time" content="2016-03-20T13:02:34.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="围棋的所有可能数361！的计算">
+<meta name="twitter:description" content="计算结果：361! ≈ 1.4379*10^768">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F361!%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97.png">
+  
+  <!-- % if (theme.favicon){ % -->
+    <!-- link rel="icon" href="/favicon.ico" -->
+  <!-- % } % -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">特立读行</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/20/c-c++/围棋的所有可能数361！的计算/">围棋的所有可能数361！的计算</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/20/c-c++/用va-list实现可变参数的函数/">用va_list实现可变参数的函数</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/20/c-c++/指向值相等的字符串常量的指针，其实指向的是同一块内存/">指向值相等的字符串常量的指针，其实指向的是同一块内存</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/20/阅读/心外无物与心无外物/">心外无物与心无外物</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/20/游戏/游戏杂谈之炉石传说/">游戏杂谈之炉石传说</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DS/">3DS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android学习/">Android学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/ppoffice/hexo-theme-alex">Alex</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-c-c++/围棋的所有可能数361！的计算" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/20/c-c++/围棋的所有可能数361！的计算/" class="article-date">
+  <time datetime="2016-03-20T12:36:30.000Z" itemprop="datePublished">2016-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      围棋的所有可能数361！的计算
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>计算结果：361! ≈ 1.4379*10^768</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>现在流行的围棋的棋盘是19行19列，也就是有19*19=361个落子之处，于是就想要计算一下围棋所有可能的棋局数量。</p>
+<p>而第一子有361处可以落（只考虑可能的话，其实谁会开局去放个角落），第二子自然是360中可能，因此总的可能情况为：</p>
+<p>361<em>360</em>359<em>……</em>2*1=361！</p>
+<p>然后用程序大概计算它的大小。</p>
+<h2 id="简单计算"><a href="#简单计算" class="headerlink" title="简单计算"></a>简单计算</h2><p>我用的第一种方法是每当结果快要超出double型的上限时，将结果除以10^100，并记录下来。这样代码比较方便，不用实现大数类，而结果可能会有些许误差。<br>代码如下：</p>
+<pre><code>// create by coffer
+int calculate(int num)
+{
+    double product, step;
+    int i, count;
+
+    if (num == 0) // 0!=1
+    {
+        printf(&quot;%d! = %d\n&quot;, num, 1);
+        return 0;
+    }
+    else if (num &lt; 0) // 若传入负数则报错
+    {
+        printf(&quot;num must be right\n&quot;);
+        return -1;
+    }
+    step = 1e100;
+    product = 1;
+    count = 0;
+
+    for (i = 1; i &lt;= num; i++)
+    {
+        if (product &gt; step)
+        {
+            count++;
+            product /= step;
+        }
+        product *= i;
+    }
+
+    if (count != 0)
+        printf(&quot;%d! = %le*10^%d00\n&quot;, num, product, count);
+    else
+        printf(&quot;%d! = %le\n&quot;, num, product);
+
+    return 0;
+}
+</code></pre><p>结果如下：<br>double型变量是64位，范围大约是-1.7<em>10(-308)～1.7</em>10(308)，于是我很简单的除以10^100，最后输出大概的量级。结果如下：</p>
+<p><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F361!%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97.png" alt="简单计算结果"></p>
+<p>可以看到361！≈ 1.43*10^（700+68），你没看错，是10的768次这个量级（具体正确性没有考证，不过下面的另一个程序应该能够互相印证），正因如此，“千古无同局”这个说法太贴切了。<br>具体等于多少可以自己写一个大数类，或者用MATLAB计算出来。</p>
+<p>而借着李世石和AlphaGo对局的机会，再来讨论一下人工智能的可怕。因为361！如此大，而现在的超级计算机也就达到十亿亿次/秒的量级，也就是10^17，想要在下围棋的4-5个小时内计算出所有可能完全是不可能的，既是对围棋的落子进行优化，也明显不可能从10^761降到10^17这个量级，因此今天AlphaGo是靠人工智能来战胜李世石的，这不废话么- -。其实这段话是看到朋友说“有什么好激动的，比运算速度有什么意思”，于是反思了一下，也唠叨一下~</p>
+<p>说到计算速度，肯定不止这方面，上面也说了想计算棋局难度太大。通过机器学习才有可能，可是机器学习又是怎么实现的呢，我反正不得而知。看来人工智能方面的知识得好好补补课了。</p>
+<p>而今天计算机可以战胜人类围棋的高峰–李世石，明天就可能在各种领域取代人类，甚至完成的更好，这样的未来到底是怎样的呢？我十分期待！</p>
+<h2 id="利用大数类计算"><a href="#利用大数类计算" class="headerlink" title="利用大数类计算"></a>利用大数类计算</h2><p>这个大数类只实现了阶乘的计算，通用的网上应该能找到，其实我只是想自己写写代码啦。<br>big_number.h</p>
+<pre><code>// create by coffer
+// big_number.h
+#include &lt;iostream&gt;
+using namespace std;
+
+#define MAX_BYTE 10000 // 结果最大位数
+#define LINE_FEED_NUM 50 // 结果每行显示位数
+
+class Big_Number{
+protected:
+    int single_num[MAX_BYTE];
+    int result[MAX_BYTE];
+    int wait_for_count_num;
+    int max_byte;
+    int over_flow;
+
+public:
+    int count(int); // 计算结果的接口
+
+protected:
+    void print_result(); // 打印结果
+    void init_num(); // 清空成员变量
+    void calculate(); // 计算结果
+} ;
+</code></pre><p>big_number.cpp</p>
+<pre><code>// create by coffer
+// big_number.cpp
+#include &quot;big_number.h&quot;
+
+// 计算结果的接口
+int Big_Number::count(int n)
+{
+    wait_for_count_num = n;
+    if (n &lt; 0)
+    {
+        cout &lt;&lt; &quot;Number must be right.\n&quot;;
+        return false;
+    }
+    else if (n == 0)
+    {
+        init_num();
+        print_result();
+    }
+    else
+    {
+        init_num();
+        calculate();
+        if (over_flow == 1)
+        {
+            cout &lt;&lt; &quot;Number is too big.\n&quot;;
+            return false;
+        }
+        print_result();
+    }
+
+    return true;
+}
+
+// 计算结果
+void Big_Number::calculate()
+{
+    int step, i, j;
+    int single_result;
+    int carry, index_of_max_byte;
+    int carry_carry_flag;
+
+    index_of_max_byte = max_byte;
+    for (step = 1; step &lt;= wait_for_count_num; step++)
+    {
+        max_byte = index_of_max_byte;
+        memcpy(single_num, result, sizeof(result));
+        memset(result, 0, sizeof(result));
+        for (i = 0; i &lt;= max_byte; i++)
+        {
+            single_result = single_num[i] * step;
+            result[i] += single_result % 10;
+            if (result[i] &gt;= 10)
+            {
+                carry_carry_flag = result[i] / 10;
+                result[i] %= 10;
+            }
+            else
+            {
+                carry_carry_flag = 0;
+            }
+            carry = single_result / 10 + carry_carry_flag;
+
+            j = 1;
+            while (carry &gt; 0)
+            {
+                if (i + j &gt;= MAX_BYTE)
+                {
+                    over_flow = 1;
+                    return;
+                }
+                result[i + j] += carry % 10;
+                if (result[i + j] &gt;= 10)
+                {
+                    carry_carry_flag = result[i + j] / 10;
+                    result[i + j] %= 10;
+                }
+                else
+                {
+                    carry_carry_flag = 0;
+                }
+                carry = carry / 10 + carry_carry_flag;
+
+                if ((i + j) &gt; index_of_max_byte)
+                {
+                    index_of_max_byte = i + j;
+                }
+
+                j++;
+            }
+        }
+    }
+
+    max_byte = index_of_max_byte;
+}
+
+// 清空成员变量
+void Big_Number::init_num()
+{
+
+    memset(result, 0, sizeof(result));
+    memset(single_num, 0, sizeof(single_num));
+    result[0] = 1;
+    max_byte = 0; 
+    over_flow = 0;
+
+    return;
+}
+
+// 打印结果
+void Big_Number::print_result()
+{
+    int i;
+    int line_feed_count;
+
+    cout &lt;&lt; wait_for_count_num &lt;&lt; &quot;! = &quot; &lt;&lt; endl;
+
+    i = max_byte;
+    line_feed_count = 1;
+    while (i&gt;=0)
+    {
+        cout &lt;&lt; result[i];
+        i--;
+        if (line_feed_count &gt;= LINE_FEED_NUM)
+        {
+            cout &lt;&lt; endl;
+            line_feed_count = 1;
+        }
+        else
+        {
+            line_feed_count++;
+        }
+    }
+
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;byte = &quot; &lt;&lt; max_byte + 1 &lt;&lt; endl;
+
+    return;
+}
+</code></pre><p>结果如下，打印的最后一行是位数统计：</p>
+<p><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F361!%E5%A4%A7%E6%95%B0%E7%B1%BB2.png" alt="大数类计算结果"></p>
+<p>这一结果和上面的1.43*10^768相等，是可以互相证明的，因此361！就是这么大的一个数，不算还真没有什么概念。突然想起来一个词，天文数字，哈，相当贴切~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/20/c-c++/用va-list实现可变参数的函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用va_list实现可变参数的函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-c-c++/围棋的所有可能数361！的计算" data-title="围棋的所有可能数361！的计算" data-url="http://cncoffer.com/2016/03/20/c-c++/围棋的所有可能数361！的计算/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+      </div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">特立读行</a>
+      &copy; 2016 Coffer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    <span id="busuanzi_container_site_pv">
+      Total <span id="busuanzi_value_site_pv"></span> views
+    </span>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

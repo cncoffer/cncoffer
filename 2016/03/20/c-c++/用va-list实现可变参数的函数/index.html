@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 游戏 | 特立读行</title>
+  <title>用va_list实现可变参数的函数 | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coffer&apos;s blog | c/c++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="特立读行">
-<meta property="og:url" content="http://cncoffer.com/tags/游戏/index.html">
+  <meta name="description" content="虽然va_list很好用，可也不要轻易使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用va_list实现可变参数的函数">
+<meta property="og:url" content="http://cncoffer.com/2016/03/20/c-c++/用va-list实现可变参数的函数/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="Coffer&apos;s blog | c/c++">
+<meta property="og:description" content="虽然va_list很好用，可也不要轻易使用">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2Fva_list%2Fresult.png">
+<meta property="og:updated_time" content="2016-03-20T13:33:29.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="特立读行">
-<meta name="twitter:description" content="Coffer&apos;s blog | c/c++">
+<meta name="twitter:title" content="用va_list实现可变参数的函数">
+<meta name="twitter:description" content="虽然va_list很好用，可也不要轻易使用">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2Fva_list%2Fresult.png">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -138,58 +141,130 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/游戏/游戏杂谈之炉石传说/" class="archive-article-date">
-  <time datetime="2016-03-20T06:07:57.000Z" itemprop="datePublished">Mar 20</time>
+        <section id="main"><article id="post-c-c++/用va-list实现可变参数的函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/20/c-c++/用va-list实现可变参数的函数/" class="article-date">
+  <time datetime="2016-03-20T12:35:27.000Z" itemprop="datePublished">2016-03-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/游戏/游戏杂谈之炉石传说/">游戏杂谈之炉石传说</a>
+    <h1 class="article-title" itemprop="name">
+      用va_list实现可变参数的函数
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/游戏/《怪物猎人X》太刀开荒心得/" class="archive-article-date">
-  <time datetime="2016-03-19T17:05:52.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/游戏/《怪物猎人X》太刀开荒心得/">《怪物猎人X》太刀开荒心得</a>
-    </h1>
-  
+        <p>虽然va_list很好用，可也不要轻易使用</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>va的意思是variable argument(可变参数)，用它就能实现可变参数的函数。</p>
+<p>我们会调用到会调用到下面这些宏定义的方法</p>
+<pre><code>//用于初始化刚定义的va_list变量
+#define va_start(ap,v)    ( ap = (va_list)_ADDRESSOF(v) + _INTSIZEOF(v) )
 
-    </header>
+//用于从va_list中取出变量
+#define va_arg(ap,t)    ( *(t *)((ap += _INTSIZEOF(t)) - _INTSIZEOF(t)) )
+
+//用于清空va_list
+#define va_end(ap)    ( ap = (va_list)0 )
+</code></pre><p>下面来看具体的使用：</p>
+<pre><code>// create by coffer
+// 可变参数函数
+#include &lt;stdarg.h&gt;
+
+int sum_of_va_num(int v, ...)
+{
+    int result;
+    int num;
+    va_list va_ptr;
+
+    result = 0;
+    va_start(va_ptr, v);
+
+    for (int i = 0; i &lt; v; i++)
+    {
+        num = va_arg(va_ptr, int);
+        result += num;
+    }
+
+    va_end(va_ptr);
+
+    return result;
+}
+</code></pre><p>调用函数：</p>
+<pre><code>// create by coffer
+int main()
+{
+    int num = 15;
+    num = 15;
+
+    printf(&quot;result = %d\n&quot;, sum_of_va_num(3, num, num + 1, num + 2));
+
+    return 0;
+}
+</code></pre><p>可以看到我们调用sum_of_va_num()的时候，传入了4个参数，在函数中能够将这四个参数全部得到，计算结果如下：</p>
+<p><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2Fva_list%2Fresult.png" alt="可变参数函数计算结果"></p>
+<p>最后提醒一下，va_list虽然用起来方便，但是因为他的变量是不定的，因此就没有参数检查的功能，如果在调用时传入的参数个数小于告诉函数的个数，那在va_arg()中就会访问到不可访问的内存，也就是说</p>
+<h3 id="——不要轻易使用va-list"><a href="#——不要轻易使用va-list" class="headerlink" title="——不要轻易使用va_list"></a>——不要轻易使用va_list</h3>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/20/c-c++/围棋的所有可能数361！的计算/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          围棋的所有可能数361！的计算
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/20/c-c++/指向值相等的字符串常量的指针，其实指向的是同一块内存/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">指向值相等的字符串常量的指针，其实指向的是同一块内存</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-c-c++/用va-list实现可变参数的函数" data-title="用va_list实现可变参数的函数" data-url="http://cncoffer.com/2016/03/20/c-c++/用va-list实现可变参数的函数/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
       </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
