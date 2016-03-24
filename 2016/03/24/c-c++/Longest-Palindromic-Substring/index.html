@@ -3,22 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>简单水印的去除方法 | 特立读行</title>
+  <title>Longest Palindromic Substring | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用美图秀秀去除简单的水印。">
+  <meta name="description" content="Question:Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单水印的去除方法">
-<meta property="og:url" content="http://cncoffer.com/2016/03/20/PS/简单水印的去除方法/index.html">
+<meta property="og:title" content="Longest Palindromic Substring">
+<meta property="og:url" content="http://cncoffer.com/2016/03/24/c-c++/Longest-Palindromic-Substring/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="使用美图秀秀去除简单的水印。">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fyuantu.jpg">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fmeitu1.png">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95meitu2.png">
-<meta property="og:updated_time" content="2016-03-21T15:15:41.536Z">
+<meta property="og:description" content="Question:Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回">
+<meta property="og:updated_time" content="2016-03-24T16:14:24.265Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单水印的去除方法">
-<meta name="twitter:description" content="使用美图秀秀去除简单的水印。">
-<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fyuantu.jpg">
+<meta name="twitter:title" content="Longest Palindromic Substring">
+<meta name="twitter:description" content="Question:Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -143,10 +139,10 @@
   
 </aside>
         
-        <section id="main"><article id="post-PS/简单水印的去除方法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-c-c++/Longest-Palindromic-Substring" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/20/PS/简单水印的去除方法/" class="article-date">
-  <time datetime="2016-03-19T16:54:39.000Z" itemprop="datePublished">2016-03-20</time>
+    <a href="/2016/03/24/c-c++/Longest-Palindromic-Substring/" class="article-date">
+  <time datetime="2016-03-24T15:09:43.000Z" itemprop="datePublished">2016-03-24</time>
 </a>
     
   </div>
@@ -157,7 +153,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      简单水印的去除方法
+      Longest Palindromic Substring
     </h1>
   
 
@@ -165,23 +161,77 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用美图秀秀去除简单的水印。<br><a id="more"></a></p>
-<ol>
-<li><p>首先这是原图，可以看到左下角有一个百度百科的水印。<br><img src="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fyuantu.jpg" alt="原图"></p>
-</li>
-<li><p>接着打开<a href="http://xiuxiu.web.meitu.com/" title="美图秀秀网页版" target="_blank" rel="external">美图秀秀网页版</a>，在网页上打开上面这张图片，然后点击消除笔。<br><img src="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fmeitu1.png" alt="点击消除笔"></p>
-</li>
-<li><p>然后用消除笔涂抹有水印的地方，涂抹之后水印就会被去除了，反复涂抹效果也许会更好。<br>最后的对比如下:<br><img src="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95meitu2.png" alt="效果对比图"></p>
-</li>
-</ol>
-<p>是不是很简单，快动手试试吧-。-</p>
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h2><p>Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.<br>给你一个字符串S，找到S中的最长回文子串。S的最大长度是1000，并且其中有且只有一个最长回文子串。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><h3 id="暴力算法——三重循环"><a href="#暴力算法——三重循环" class="headerlink" title="暴力算法——三重循环"></a>暴力算法——三重循环</h3><p>首先用笨办法实现一下，代码如下</p>
+<pre><code>class Solution
+{
+public:
+    string longestPalindrome(string s) {
+        int i;
+        int max_len, max_len_index;
+        int length_count;
+        //int str_end;
+        int str_length = s.length();
+
+        if (str_length &lt;= 1)
+        {
+            return s; // 若长度小于1，则不用检查回文了
+        }
+
+        max_len = 1; // 若字符串不为空，回文子串长度最少是1
+        max_len_index = 0;
+
+        for (i = 0; i &lt; str_length; i++) {
+            length_count = max_len + 1; // 如果最长回文子串唯一，则应当从max_len+1开始检测
+
+            while ( length_count + i &lt; str_length) {
+                if (true == is_Palindrome(s.substr(i, length_count))) {
+                    max_len = length_count;
+                    max_len_index = i;
+                }
+                length_count++;
+            }
+        }
+
+        return s.substr(max_len_index, max_len);
+    }
+
+private:
+    bool is_Palindrome(string s) {
+        int i, end;
+        end = s.length() - 1;
+
+        if (end &lt;= 0) {
+            return true;
+        }
+
+        i = 0;
+        while (i &lt; (end-i)) {
+            if (s[i] == s[end - i]) {
+                i++;
+            }
+            else {
+                return false;
+            }
+        }
+
+        return true;
+    }
+public:
+    Solution();
+    ~Solution();
+};
+</code></pre><p>这个用的是最暴力的方法，时间复杂度为O(n^3)，太差了，因为提交超时了。<br>不过这也是意料之中的，3次方肯定是不能接受的。</p>
+<h3 id="暴力算法的改进"><a href="#暴力算法的改进" class="headerlink" title="暴力算法的改进"></a>暴力算法的改进</h3><p>因为回文肯定是对称的，因此可以确定一个轴，从轴中间向两边对比是否是回文。<br>然后不停的移动轴来遍历整个字符串，时间复杂度降到O(n^2).</p>
+<p>今天先睡了，明天继续~</p>
 
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS/">PS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
 
     </footer>
   </div>
@@ -189,19 +239,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          《怪物猎人X》太刀开荒心得
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/19/杂谈/写在最开始的话/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/03/24/PS/基本编辑方法笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">写在最开始的话</div>
+      <div class="article-nav-title">PS学习之&quot;基本编辑方法笔记（二）&quot;</div>
     </a>
   
 </nav>
@@ -212,7 +253,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-PS/简单水印的去除方法" data-title="简单水印的去除方法" data-url="http://cncoffer.com/2016/03/20/PS/简单水印的去除方法/"></div>
+  <div class="ds-thread" data-thread-key="post-c-c++/Longest-Palindromic-Substring" data-title="Longest Palindromic Substring" data-url="http://cncoffer.com/2016/03/24/c-c++/Longest-Palindromic-Substring/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
