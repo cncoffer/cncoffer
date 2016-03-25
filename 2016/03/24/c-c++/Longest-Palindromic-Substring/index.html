@@ -11,10 +11,12 @@
 <meta property="og:url" content="http://cncoffer.com/2016/03/24/c-c++/Longest-Palindromic-Substring/index.html">
 <meta property="og:site_name" content="特立读行">
 <meta property="og:description" content="QuestionGiven a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回文">
-<meta property="og:updated_time" content="2016-03-24T16:19:14.305Z">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95result.jpeg">
+<meta property="og:updated_time" content="2016-03-25T17:19:14.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Longest Palindromic Substring">
 <meta name="twitter:description" content="QuestionGiven a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回文">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95result.jpeg">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -164,7 +166,8 @@
         <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.<br>给你一个字符串S，找到S中的最长回文子串。S的最大长度是1000，并且其中有且只有一个最长回文子串。</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="暴力算法——三重循环"><a href="#暴力算法——三重循环" class="headerlink" title="暴力算法——三重循环"></a>暴力算法——三重循环</h3><p>首先用笨办法实现一下，代码如下</p>
-<pre><code>class Solution
+<pre><code>// create by coffer
+class Solution
 {
 public:
     string longestPalindrome(string s) {
@@ -223,8 +226,86 @@ public:
     ~Solution();
 };
 </code></pre><p>这个用的是最暴力的方法，时间复杂度为O(n^3)，太差了，因为提交超时了。<br>不过这也是意料之中的，3次方肯定是不能接受的。</p>
-<h3 id="暴力算法的改进"><a href="#暴力算法的改进" class="headerlink" title="暴力算法的改进"></a>暴力算法的改进</h3><p>因为回文肯定是对称的，因此可以确定一个轴，从轴中间向两边对比是否是回文。<br>然后不停的移动轴来遍历整个字符串，时间复杂度降到O(n^2).</p>
-<p>今天先睡了，明天继续~</p>
+<p><br></p>
+<h3 id="暴力算法的改进"><a href="#暴力算法的改进" class="headerlink" title="暴力算法的改进"></a>暴力算法的改进</h3><p>因为回文肯定是对称的，因此可以确定一个轴，从轴中间向两边对比是否是回文。<br>然后不停的移动轴来遍历整个字符串，时间复杂度降到O(n^2).<br>需要注意的一点是，轴有两种情况，对于字符串“abc”，轴可以位于b，也可以位于a与b之间，所以这两种情况都需要考虑。<br>代码如下：</p>
+<pre><code>#pragma once
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+// create by coffer
+
+class Solution
+{
+// &quot;回文的对称轴&quot;下面简称&quot;轴&quot;
+#define MID_IS_EXIST 1 // 轴位于字符上的情况
+#define MID_NOT_EXIST 0 // 轴位于两个字符之间的情况
+public:
+    Solution();
+    ~Solution();
+public:
+    string longestPalindrome(string s) {
+        int str_length = s.length();
+
+        if (str_length &lt;= 1) {
+            return s;
+        }
+
+        int max_length, max_index;
+        int length_count;
+        int i;
+
+        max_length = 1;
+        max_index = 0;
+        for (i = 0; i &lt; str_length - 1; i++) { // 轴从第一个字符开始移动到最后一个字符,这里结束条件应该可以优化
+            length_count = calcu_length(s, i, MID_IS_EXIST); // 轴位于第i个字符上
+            if (length_count &gt; max_length) {
+                max_length = length_count;
+                max_index = i - (length_count - 1) / 2;
+            }
+            length_count = calcu_length(s, i, MID_NOT_EXIST); // 轴位于第i个和第i+1个字符之间
+            if (length_count &gt; max_length) {
+                max_length = length_count;
+                max_index = i - length_count / 2 + 1;
+            }
+        }
+        return s.substr(max_index, max_length);
+    }
+
+    int calcu_length(string s, int mid, int whether_mid_exist) {
+        int front, end;
+        int str_length = s.length();
+        int length_count = 0;
+
+        if (whether_mid_exist == MID_IS_EXIST) { // 对于轴位置的两种情况,做不同的处理
+            front = mid - 1;
+            end = mid + 1;
+            length_count++;
+        }
+        else {
+            front = mid;
+            end = mid + 1;
+        }
+
+        // 从轴开始,向两边比较,知道找到不同的字符为止,返回计算得到的回文长度
+        while ((front &gt;= 0) &amp;&amp; (end &lt;= str_length - 1)) {
+            if (s[front] == s[end]) {
+                length_count += 2;
+            }
+            else {
+                break;
+            }
+            front--;
+            end++;
+        }
+
+        return length_count;
+    }
+};
+</code></pre><p>顺利通过测试，结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95result.jpeg" alt="Submission Details"></p>
+<p>可以看到，运行时间还是不太理想，恩，暂时想不出办法了。不过闭门造车肯定是不行的，学习学习大牛们使用的算法吧。</p>
+<p><br></p>
+<h3 id="Manacher算法"><a href="#Manacher算法" class="headerlink" title="Manacher算法"></a>Manacher算法</h3><p>先记下链接，后面再看~</p>
+<p><a href="http://blog.163.com/zhaohai_1988/blog/static/2095100852012716105847112/" title="http://blog.163.com/zhaohai_1988/blog/static/2095100852012716105847112/" target="_blank" rel="external">最长回文子串</a><br><a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/10/04/2711527.html" title="http://www.cnblogs.com/biyeymyhjob/archive/2012/10/04/2711527.html" target="_blank" rel="external">O(n)回文子串（Manacher）算法</a></p>
 
       
     </div>
