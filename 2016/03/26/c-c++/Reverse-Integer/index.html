@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>特立读行</title>
+  <title>Reverse Integer | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coffer&apos;s blog | c/c++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="特立读行">
-<meta property="og:url" content="http://cncoffer.com/page/3/index.html">
+  <meta name="description" content="QuestionReverse digits of an integer.反转整型数字。
+Example1: x = 123, return 321
+Example2: x = -123, return -321">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reverse Integer">
+<meta property="og:url" content="http://cncoffer.com/2016/03/26/c-c++/Reverse-Integer/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="Coffer&apos;s blog | c/c++">
+<meta property="og:description" content="QuestionReverse digits of an integer.反转整型数字。
+Example1: x = 123, return 321
+Example2: x = -123, return -321">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%93%E6%9E%9C.png">
+<meta property="og:updated_time" content="2016-03-26T15:53:46.255Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="特立读行">
-<meta name="twitter:description" content="Coffer&apos;s blog | c/c++">
+<meta name="twitter:title" content="Reverse Integer">
+<meta name="twitter:description" content="QuestionReverse digits of an integer.反转整型数字。
+Example1: x = 123, return 321
+Example2: x = -123, return -321">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%93%E6%9E%9C.png">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -138,12 +147,10 @@
   
 </aside>
         
-        <section id="main">
-  
-    <article id="post-android-learning/Android-Studio的logccat功能" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-c-c++/Reverse-Integer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/20/android-learning/Android-Studio的logccat功能/" class="article-date">
-  <time datetime="2016-03-20T04:52:03.000Z" itemprop="datePublished">2016-03-20</time>
+    <a href="/2016/03/26/c-c++/Reverse-Integer/" class="article-date">
+  <time datetime="2016-03-26T15:09:58.000Z" itemprop="datePublished">2016-03-26</time>
 </a>
     
   </div>
@@ -153,8 +160,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/20/android-learning/Android-Studio的logccat功能/">Android学习之&quot;Android Studio的logccat功能&quot;</a>
+    <h1 class="article-title" itemprop="name">
+      Reverse Integer
     </h1>
   
 
@@ -162,160 +169,95 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Log函数和LogCat的配合确实好用。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/20/android-learning/Android-Studio的logccat功能/#more">Read More</a>
-          </p>
-        
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Reverse digits of an integer.<br>反转整型数字。</p>
+<pre><code>Example1: x = 123, return 321
+Example2: x = -123, return -321
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>首先想到的是将x从个位开始，一个个取下来，然后一个个反序放入另一个int型变量。</p>
+<pre><code>y *= 10;
+y += x%10;
+x /= 10;
+</code></pre><p>如此不停循环，直到取完x的每一位数字。<br><strong>需要注意检查反转后是否溢出。</strong><br>代码如下：</p>
+<pre><code>#define NUMBER_TEN 10
+#define OVER_FLOW_LIMIT  214748364 // (INT_MAX / 10)
+int reverse(int x) {
+    int flag, result;
+
+    if (x &lt;= 9 &amp;&amp; x &gt;= -9) { // 若只有一位，则直接返回
+        return x;
+    }
+
+    if (x &lt; 0) { // 提取符号位
+        flag = -1;
+        x = -x;
+    }
+    else {
+        flag = 1;
+    }
+
+    result = 0;
+    while (x &gt; 0) {
+        if (result &gt; OVER_FLOW_LIMIT) { // 检测是否会溢出
+            return 0;
+        }
+        result *= NUMBER_TEN;
+        result += （x % NUMBER_TEN）;
+        x /= NUMBER_TEN;
+    }
+
+    return result * flag;
+}
+</code></pre><p>结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%93%E6%9E%9C.png" alt="运行结果"></p>
+<p>看这个结果似乎还可以，不过感觉还是有可以改进的地方。算法复杂度是O(l)，l表示整数长度。</p>
+<p><br></p>
+<h3 id="题外话-方法二"><a href="#题外话-方法二" class="headerlink" title="题外话 !方法二"></a>题外话 !方法二</h3><p>接着我想到，是否能只在源数字变量x上进行变换呢？而这样是否有提高效率的办法呢？</p>
+<p>本来想考虑一下其他方法的，仔细思考了一下。好吧，我承认我傻了，针对这题，int型最大也就2^32，大约10个10进制位，O(l)的时间复杂度，这哪里还有深究算法的必要。</p>
+<p>不过长字符串倒是可以用这样的办法，应该能省下比较多的空间，但是字符串取字符又没有取十进制数字这么麻烦了，遇到再说吧~</p>
+<p>还是不纠结了-。-</p>
+
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android学习/">Android学习</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-game/《怪物猎人X》太刀开荒心得" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/" class="article-date">
-  <time datetime="2016-03-19T17:05:52.000Z" itemprop="datePublished">2016-03-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/">《怪物猎人X》太刀开荒心得</a>
-    </h1>
+    <a href="/2016/03/26/杂谈/纸飞镖做书签/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">纸飞镖做书签</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MHX我玩了大概80小时，用太刀solo到了集会6星，太刀开荒还是有一点心得了。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3DS/">3DS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游戏/">游戏</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-    <article id="post-PS/简单水印的去除方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/20/PS/简单水印的去除方法/" class="article-date">
-  <time datetime="2016-03-19T16:54:39.000Z" itemprop="datePublished">2016-03-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/20/PS/简单水印的去除方法/">简单水印的去除方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用美图秀秀去除简单的水印。<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/20/PS/简单水印的去除方法/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS/">PS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-杂谈/写在最开始的话" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/19/杂谈/写在最开始的话/" class="article-date">
-  <time datetime="2016-03-19T15:41:46.000Z" itemprop="datePublished">2016-03-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/19/杂谈/写在最开始的话/">写在最开始的话</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我写博客是为了记录心情还是分享快乐呢？</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/19/杂谈/写在最开始的话/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-c-c++/Reverse-Integer" data-title="Reverse Integer" data-url="http://cncoffer.com/2016/03/26/c-c++/Reverse-Integer/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
       </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
