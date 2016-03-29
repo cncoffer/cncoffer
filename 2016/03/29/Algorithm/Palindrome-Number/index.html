@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 特立读行</title>
+  <title>Palindrome Number | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coffer&apos;s blog | c/c++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="特立读行">
-<meta property="og:url" content="http://cncoffer.com/archives/page/2/index.html">
+  <meta name="description" content="QuestionDetermine whether an integer is a palindrome. Do this without extra space.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Palindrome Number">
+<meta property="og:url" content="http://cncoffer.com/2016/03/29/Algorithm/Palindrome-Number/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="Coffer&apos;s blog | c/c++">
+<meta property="og:description" content="QuestionDetermine whether an integer is a palindrome. Do this without extra space.">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2Bresult.PNG">
+<meta property="og:updated_time" content="2016-03-29T14:40:51.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="特立读行">
-<meta name="twitter:description" content="Coffer&apos;s blog | c/c++">
+<meta name="twitter:title" content="Palindrome Number">
+<meta name="twitter:description" content="QuestionDetermine whether an integer is a palindrome. Do this without extra space.">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2Bresult.PNG">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -138,139 +141,132 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/reading/蒙蔽你的不是修改过的数据和粉饰过的谎言，而是动过手脚的良心/" class="archive-article-date">
-  <time datetime="2016-03-20T05:46:28.000Z" itemprop="datePublished">Mar 20</time>
+        <section id="main"><article id="post-Algorithm/Palindrome-Number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/29/Algorithm/Palindrome-Number/" class="article-date">
+  <time datetime="2016-03-29T12:58:57.000Z" itemprop="datePublished">2016-03-29</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/reading/蒙蔽你的不是修改过的数据和粉饰过的谎言，而是动过手脚的良心/">蒙蔽你的不是修改过的数据和粉饰过的谎言，而是动过手脚的良心</a>
+    <h1 class="article-title" itemprop="name">
+      Palindrome Number
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/android-learning/Android-Studio安装总结/" class="archive-article-date">
-  <time datetime="2016-03-20T05:21:06.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/android-learning/Android-Studio安装总结/">Android学习之&quot;Android Studio安装总结&quot;</a>
-    </h1>
-  
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><p>首先想到的是将最高位和最低位的数字取下来比较，然后去次高位和次低位的比较，以此类推。知道比较到中间数字，得出结果。<br>有几点需要注意：</p>
+<ol>
+<li>负数如何处理？ 根据测试的要求，负数不算。</li>
+<li>是否会有溢出？ 处理的时候控制不要出现比x大的数就不会溢出。</li>
+</ol>
+<p>代码如下：</p>
+<pre><code>bool isPalindrome(int x) {
+    unsigned int temp;
+    int length;
+    if (x &lt; 0) {
+        return false;
+    }
+    else if (x == 0) {
+        return true;
+    }
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/android-learning/Android-Studio的logccat功能/" class="archive-article-date">
-  <time datetime="2016-03-20T04:52:03.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    length = 0;
+    temp = x;
+    while (temp &gt; 0) {
+        temp /= 10;
+        length++;
+    }
+
+    unsigned int front_index, behind_index;
+    int front, behind;
+    front_index = (int)pow(10, length - 1 ); // front_index 有可能溢出
+    behind_index = 100;
+    front = x / front_index;
+    behind = x % 10;
+    if (behind != front) {
+        return false;
+    }
+
+    while (behind_index &lt; front_index) {
+        behind = (x % behind_index) / (behind_index / 10);
+        front = (x % front_index) / (front_index / 10);
+        if (behind != front) {
+            return false;
+        }
+        else {
+            // 如果将前后数字取走看似方便，但是1000021这样的数判断不出，取了第一个1就变成了21了，因此第一位的数字不能取走
+            front_index /= 10;
+            behind_index *= 10;
+        }
+    }
+    return true;
+}
+</code></pre><p>这里用的就是上面描述的方法，从高位和低位不停的取数字比较，直到比较到中间。<br>然后说到结果，看起来不错，就不继续研究下去了。</p>
+<p><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2Bresult.PNG" alt="测试结果"></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/android-learning/Android-Studio的logccat功能/">Android学习之&quot;Android Studio的logccat功能&quot;</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/" class="archive-article-date">
-  <time datetime="2016-03-19T17:05:52.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/">《怪物猎人X》太刀开荒心得</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/PS/简单水印的去除方法/" class="archive-article-date">
-  <time datetime="2016-03-19T16:54:39.000Z" itemprop="datePublished">Mar 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/PS/简单水印的去除方法/">简单水印的去除方法</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/19/杂谈/写在最开始的话/" class="archive-article-date">
-  <time datetime="2016-03-19T15:41:46.000Z" itemprop="datePublished">Mar 19</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/19/杂谈/写在最开始的话/">写在最开始的话</a>
-    </h1>
+    <a href="/2016/03/29/reading/祈祷落幕时——走近加贺不为人知的过去/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          祈祷落幕时——走近加贺恭一郎不为人知的过去
+        
+      </div>
+    </a>
   
+  
+    <a href="/2016/03/26/Algorithm/Reverse-Integer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Reverse Integer</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Algorithm/Palindrome-Number" data-title="Palindrome Number" data-url="http://cncoffer.com/2016/03/29/Algorithm/Palindrome-Number/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
       </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">

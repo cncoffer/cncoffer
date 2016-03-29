@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ZigZag Conversion | 特立读行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="QuestionThe string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZigZag Conversion">
+<meta property="og:url" content="http://cncoffer.com/2016/03/26/Algorithm/ZigZag-Conversion/index.html">
+<meta property="og:site_name" content="特立读行">
+<meta property="og:description" content="QuestionThe string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2Fresult1.jpeg">
+<meta property="og:updated_time" content="2016-03-29T14:40:13.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ZigZag Conversion">
+<meta name="twitter:description" content="QuestionThe string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2Fresult1.jpeg">
+  
+  <!-- % if (theme.favicon){ % -->
+    <!-- link rel="icon" href="/favicon.ico" -->
+  <!-- % } % -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">特立读行</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">26</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/29/reading/祈祷落幕时——走近加贺不为人知的过去/">祈祷落幕时——走近加贺恭一郎不为人知的过去</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/29/Algorithm/Palindrome-Number/">Palindrome Number</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/26/Algorithm/Reverse-Integer/">Reverse Integer</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/26/杂谈/纸飞镖做书签/">纸飞镖做书签</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/26/PS/剪贴蒙版/">PS学习之&quot;剪贴蒙版&quot;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DS/">3DS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android学习/">Android学习</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐-视频/">音乐&视频</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/ppoffice/hexo-theme-alex">Alex</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-Algorithm/ZigZag-Conversion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/26/Algorithm/ZigZag-Conversion/" class="article-date">
+  <time datetime="2016-03-25T17:55:37.000Z" itemprop="datePublished">2016-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ZigZag Conversion
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>The string <strong>“PAYPALISHIRING”</strong> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<pre><code>P   A   H   N
+A P L S I I G
+Y   I   R
+</code></pre><p>And then read line by line: <strong>“PAHNAPLSIIGYIR”</strong><br>Write the code that will take a string and make this conversion given a number of rows:</p>
+<pre><code>string convert(string text, int nRows);
+</code></pre><p><strong>convert(“PAYPALISHIRING”, 3)</strong> should return <strong>“PAHNAPLSIIGYIR”</strong>.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="先分成n行，再合并"><a href="#先分成n行，再合并" class="headerlink" title="先分成n行，再合并"></a>先分成n行，再合并</h3><p>这个方法很容易想到，因为比较直观嘛。先把给定的字符串按照zigzag转换的方式排序好，分别按行放入n个字符串，然后再将这n个字符串串联起来，得到结果。<br>代码如下：</p>
+<pre><code>// create by coffer
+string convert(string s, int numRows) {
+    string *str_array;
+    int i;
+    int str_length = s.length();
+
+    if (str_length &lt;= 1 || numRows == 1) { // 排除特殊情况
+        return s;
+    }
+
+    // 申请并初始化这n个字符串,用于存放zigzag转换
+    str_array = new string[numRows]; 
+    for (i = 0; i &lt; numRows; i++) {
+        str_array[i].clear();
+    }
+
+    int mod_num = numRows * 2 - 2;
+    int index;
+    for (i = 0; i &lt; str_length; i++) {
+        index = i%mod_num;
+        if (index &gt;= numRows) {
+            // index = (numRows - 1) - (index - numRows +1)
+            index = 2 * numRows - index - 2; 
+        }
+        str_array[index] += s[i];
+    }
+
+    string result;
+    result.clear();
+    for (i = 0; i &lt; numRows; i++) {
+        //cout &lt;&lt; str_array[i] &lt;&lt; endl;
+        result += str_array[i];
+    }
+    return result;
+}
+</code></pre><p>第一次提交的时候忘记把打印注释掉，然后运行的好慢啊，然后把它注释掉运行结果就快了一点点。<br>结果如下：</p>
+<p><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2Fresult1.jpeg" alt="运行结果"></p>
+<p>从运行结果可见虽然这一算法是O(n)，但常数还是比较大，这个算法还不够好，有待改进。</p>
+<h3 id="上面算法的改进"><a href="#上面算法的改进" class="headerlink" title="上面算法的改进"></a>上面算法的改进</h3><p>主要想法是直接从源字符串中按照顺序挑出要放到结果里的字符，<strong>理应可以简化很多中间步骤</strong>，这里需要推导一下公式。<br>对于4行的数，<code>（4*2-2=）</code>6个数是一个循环</p>
+<pre><code>1    1    1
+2  6 2  6 2
+3 5  3 5  3 ……
+4    4    4
+</code></pre><p>因此，将行数<code>numRows*2-2</code>这一公式的计算结果记为<code>mod</code>。则，第一行第一个数的下标为<code>mod*0+0</code>,第一行第二个数的下标为<code>mod*1+0</code>……<br>第二行第一个数的下标为<code>mod*0+1</code>,第二行第二个数的下标为<code>mod*0+(mod-1)</code>,第二行第三个数的下标为<code>mod*1+1</code>,第二行第四个数的下标为<code>mod*1+(mod-1)</code><br>依次类推可得每一行每一个字符在源字符串中的位置。<br>因此确立公式，直接从源字符串转换到目标字符串，省去了中间的步骤。<br>代码如下：</p>
+<pre><code>// create by coffer
+string convert(string s, int numRows) {
+    int mod_num;
+    int row, i;
+    int str_length = s.length();
+    string result_str;
+    int next_index, next_index_2;
+
+    if (str_length &lt;= 1 || numRows &lt;= 1) {
+        return s;
+    }
+
+    mod_num = 2 * numRows - 2;
+    //result_str.clear();
+    row = 0;
+
+    // 首行
+    next_index = 0;
+    while (next_index &lt; str_length) {
+        result_str += s[next_index];
+        next_index += mod_num;
+    }
+
+    // 中间行
+    for (i = 1; i &lt; numRows - 1; i++) {
+        next_index = i;
+        next_index_2 = mod_num - i;
+        while (next_index_2 &lt; str_length) {
+            result_str = result_str + s[next_index] + s[next_index_2];
+            next_index += mod_num;
+            next_index_2 += mod_num;
+        }
+        if (next_index &lt; str_length) {
+            result_str += s[next_index];
+        }
+    }
+
+    // 末行
+    next_index = mod_num / 2;
+    while (next_index &lt; str_length) {
+        result_str += s[next_index];
+        next_index += mod_num;
+    }
+
+    return result_str;
+}
+</code></pre><p>但是意料之外的是，结果还是一样，才击败20%，可能O(n)确实还不够快，需要新的算法。<br>还是那句话，不能闭门造轮子，看看大牛们怎么做的吧~</p>
+<h3 id="很精巧的代码"><a href="#很精巧的代码" class="headerlink" title="很精巧的代码"></a>很精巧的代码</h3><p>引用自桑海的博客：<a href="http://www.cnblogs.com/sanghai/p/3632528.html" title="http://www.cnblogs.com/sanghai/p/3632528.html" target="_blank" rel="external">http://www.cnblogs.com/sanghai/p/3632528.html</a></p>
+<pre><code>string convert(string s, int nRows){
+    if(nRows == 1) return s;
+    string res[nRows];
+    int i = 0, j, gap = nRows-2;
+    while(i &lt; s.size()){
+        for(j = 0; i &lt; s.size() &amp;&amp; j &lt; nRows; ++j) res[j] += s[i++];
+        for(j = gap; i &lt; s.size() &amp;&amp; j &gt; 0; --j) res[j] += s[i++];
+    }
+    string str = &quot;&quot;;
+    for(i = 0; i &lt; nRows; ++i)
+        str += res[i];
+    return str;
+}
+</code></pre><p>好简洁！不过复杂度还是在O(n)，等以后找到了更好的代码再贴上来吧~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/26/PS/剪贴蒙版/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PS学习之&quot;剪贴蒙版&quot;
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/24/Algorithm/Longest-Palindromic-Substring/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Longest Palindromic Substring</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Algorithm/ZigZag-Conversion" data-title="ZigZag Conversion" data-url="http://cncoffer.com/2016/03/26/Algorithm/ZigZag-Conversion/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+      </div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">特立读行</a>
+      &copy; 2016 Coffer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    <span id="busuanzi_container_site_pv">
+      Total <span id="busuanzi_value_site_pv"></span> views
+    </span>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

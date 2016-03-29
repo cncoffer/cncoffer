@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Longest Palindromic Substring | 特立读行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="QuestionGiven a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Palindromic Substring">
+<meta property="og:url" content="http://cncoffer.com/2016/03/24/Algorithm/Longest-Palindromic-Substring/index.html">
+<meta property="og:site_name" content="特立读行">
+<meta property="og:description" content="QuestionGiven a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回文">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95result.jpeg">
+<meta property="og:updated_time" content="2016-03-29T14:39:41.676Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Longest Palindromic Substring">
+<meta name="twitter:description" content="QuestionGiven a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.给你一个字符串S，找到S中的最长回文">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95result.jpeg">
+  
+  <!-- % if (theme.favicon){ % -->
+    <!-- link rel="icon" href="/favicon.ico" -->
+  <!-- % } % -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">特立读行</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">26</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/29/reading/祈祷落幕时——走近加贺不为人知的过去/">祈祷落幕时——走近加贺恭一郎不为人知的过去</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/29/Algorithm/Palindrome-Number/">Palindrome Number</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/26/Algorithm/Reverse-Integer/">Reverse Integer</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/26/杂谈/纸飞镖做书签/">纸飞镖做书签</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/26/PS/剪贴蒙版/">PS学习之&quot;剪贴蒙版&quot;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DS/">3DS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android学习/">Android学习</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐-视频/">音乐&视频</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/ppoffice/hexo-theme-alex">Alex</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-Algorithm/Longest-Palindromic-Substring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/24/Algorithm/Longest-Palindromic-Substring/" class="article-date">
+  <time datetime="2016-03-24T15:09:43.000Z" itemprop="datePublished">2016-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Longest Palindromic Substring
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.<br>给你一个字符串S，找到S中的最长回文子串。S的最大长度是1000，并且其中有且只有一个最长回文子串。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="暴力算法——三重循环"><a href="#暴力算法——三重循环" class="headerlink" title="暴力算法——三重循环"></a>暴力算法——三重循环</h3><p>首先用笨办法实现一下，代码如下</p>
+<pre><code>// create by coffer
+class Solution
+{
+public:
+    string longestPalindrome(string s) {
+        int i;
+        int max_len, max_len_index;
+        int length_count;
+        //int str_end;
+        int str_length = s.length();
+
+        if (str_length &lt;= 1)
+        {
+            return s; // 若长度小于1，则不用检查回文了
+        }
+
+        max_len = 1; // 若字符串不为空，回文子串长度最少是1
+        max_len_index = 0;
+
+        for (i = 0; i &lt; str_length; i++) {
+            length_count = max_len + 1; // 如果最长回文子串唯一，则应当从max_len+1开始检测
+
+            while ( length_count + i &lt; str_length) {
+                if (true == is_Palindrome(s.substr(i, length_count))) {
+                    max_len = length_count;
+                    max_len_index = i;
+                }
+                length_count++;
+            }
+        }
+
+        return s.substr(max_len_index, max_len);
+    }
+
+private:
+    bool is_Palindrome(string s) {
+        int i, end;
+        end = s.length() - 1;
+
+        if (end &lt;= 0) {
+            return true;
+        }
+
+        i = 0;
+        while (i &lt; (end-i)) {
+            if (s[i] == s[end - i]) {
+                i++;
+            }
+            else {
+                return false;
+            }
+        }
+
+        return true;
+    }
+public:
+    Solution();
+    ~Solution();
+};
+</code></pre><p>这个用的是最暴力的方法，时间复杂度为O(n^3)，太差了，因为提交超时了。<br>不过这也是意料之中的，3次方肯定是不能接受的。</p>
+<p><br></p>
+<h3 id="暴力算法的改进"><a href="#暴力算法的改进" class="headerlink" title="暴力算法的改进"></a>暴力算法的改进</h3><p>因为回文肯定是对称的，因此可以确定一个轴，从轴中间向两边对比是否是回文。<br>然后不停的移动轴来遍历整个字符串，时间复杂度降到O(n^2).<br>需要注意的一点是，轴有两种情况，对于字符串“abc”，轴可以位于b，也可以位于a与b之间，所以这两种情况都需要考虑。<br>代码如下：</p>
+<pre><code>#pragma once
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+// create by coffer
+
+class Solution
+{
+// &quot;回文的对称轴&quot;下面简称&quot;轴&quot;
+#define MID_IS_EXIST 1 // 轴位于字符上的情况
+#define MID_NOT_EXIST 0 // 轴位于两个字符之间的情况
+public:
+    Solution();
+    ~Solution();
+public:
+    string longestPalindrome(string s) {
+        int str_length = s.length();
+
+        if (str_length &lt;= 1) {
+            return s;
+        }
+
+        int max_length, max_index;
+        int length_count;
+        int i;
+
+        max_length = 1;
+        max_index = 0;
+        for (i = 0; i &lt; str_length - 1; i++) { // 轴从第一个字符开始移动到最后一个字符,这里结束条件应该可以优化
+            length_count = calcu_length(s, i, MID_IS_EXIST); // 轴位于第i个字符上
+            if (length_count &gt; max_length) {
+                max_length = length_count;
+                max_index = i - (length_count - 1) / 2;
+            }
+            length_count = calcu_length(s, i, MID_NOT_EXIST); // 轴位于第i个和第i+1个字符之间
+            if (length_count &gt; max_length) {
+                max_length = length_count;
+                max_index = i - length_count / 2 + 1;
+            }
+        }
+        return s.substr(max_index, max_length);
+    }
+
+    int calcu_length(string s, int mid, int whether_mid_exist) {
+        int front, end;
+        int str_length = s.length();
+        int length_count = 0;
+
+        if (whether_mid_exist == MID_IS_EXIST) { // 对于轴位置的两种情况,做不同的处理
+            front = mid - 1;
+            end = mid + 1;
+            length_count++;
+        }
+        else {
+            front = mid;
+            end = mid + 1;
+        }
+
+        // 从轴开始,向两边比较,知道找到不同的字符为止,返回计算得到的回文长度
+        while ((front &gt;= 0) &amp;&amp; (end &lt;= str_length - 1)) {
+            if (s[front] == s[end]) {
+                length_count += 2;
+            }
+            else {
+                break;
+            }
+            front--;
+            end++;
+        }
+
+        return length_count;
+    }
+};
+</code></pre><p>顺利通过测试，结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95result.jpeg" alt="Submission Details"></p>
+<p>可以看到，运行时间还是不太理想，恩，暂时想不出办法了。不过闭门造车肯定是不行的，学习学习大牛们使用的算法吧。</p>
+<p><br></p>
+<h3 id="Manacher算法"><a href="#Manacher算法" class="headerlink" title="Manacher算法"></a>Manacher算法</h3><p>这是一个O(n)的算法，真是强大。<br>先记下链接，后面再看~</p>
+<p><a href="http://blog.163.com/zhaohai_1988/blog/static/2095100852012716105847112/" title="http://blog.163.com/zhaohai_1988/blog/static/2095100852012716105847112/" target="_blank" rel="external">最长回文子串</a><br><a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/10/04/2711527.html" title="http://www.cnblogs.com/biyeymyhjob/archive/2012/10/04/2711527.html" target="_blank" rel="external">O(n)回文子串（Manacher）算法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/26/Algorithm/ZigZag-Conversion/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ZigZag Conversion
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/24/PS/基本编辑方法笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PS学习之&quot;基本编辑方法笔记（二）&quot;</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Algorithm/Longest-Palindromic-Substring" data-title="Longest Palindromic Substring" data-url="http://cncoffer.com/2016/03/24/Algorithm/Longest-Palindromic-Substring/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+      </div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">特立读行</a>
+      &copy; 2016 Coffer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    <span id="busuanzi_container_site_pv">
+      Total <span id="busuanzi_value_site_pv"></span> views
+    </span>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
