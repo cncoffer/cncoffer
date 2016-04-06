@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/3 | 特立读行</title>
+  <title>Container With Most Water | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coffer&apos;s blog | c/c++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="特立读行">
-<meta property="og:url" content="http://cncoffer.com/archives/2016/03/page/2/index.html">
+  <meta name="description" content="QuestionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Fin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Container With Most Water">
+<meta property="og:url" content="http://cncoffer.com/2016/04/06/Algorithm/Container-With-Most-Water/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="Coffer&apos;s blog | c/c++">
+<meta property="og:description" content="QuestionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Fin">
+<meta property="og:updated_time" content="2016-04-06T15:09:06.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="特立读行">
-<meta name="twitter:description" content="Coffer&apos;s blog | c/c++">
+<meta name="twitter:title" content="Container With Most Water">
+<meta name="twitter:description" content="QuestionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Fin">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -138,139 +139,101 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/reading/蒙蔽你的不是修改过的数据和粉饰过的谎言，而是动过手脚的良心/" class="archive-article-date">
-  <time datetime="2016-03-20T05:46:28.000Z" itemprop="datePublished">Mar 20</time>
+        <section id="main"><article id="post-Algorithm/Container-With-Most-Water" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/06/Algorithm/Container-With-Most-Water/" class="article-date">
+  <time datetime="2016-04-06T14:19:29.000Z" itemprop="datePublished">2016-04-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/reading/蒙蔽你的不是修改过的数据和粉饰过的谎言，而是动过手脚的良心/">蒙蔽你的不是修改过的数据和粉饰过的谎言，而是动过手脚的良心</a>
+    <h1 class="article-title" itemprop="name">
+      Container With Most Water
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/android-learning/Android-Studio安装总结/" class="archive-article-date">
-  <time datetime="2016-03-20T05:21:06.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/android-learning/Android-Studio安装总结/">Android学习之&quot;Android Studio安装总结&quot;</a>
-    </h1>
-  
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.<br>Note: You may not slant the container.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>翻译：给出n个非负整数a1,a2,……,an,这些数代表了一个点的坐标(i,ai). 在坐标轴上根据(i,ai)和(i,0)为端点画了n条垂直线段。要求寻找两条线，他们和x轴组成的容器能容纳最多的水。<br>提示：你不应倾斜容器。</p>
+<hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="暴力算法"><a href="#暴力算法" class="headerlink" title="暴力算法"></a>暴力算法</h3><p>惯例，首先想到的肯定是双重循环的暴力算法啦，将所有容器能容纳的水都计算出来，找出最大的就是了。<br>代码如下：</p>
+<pre><code>int maxArea(vector&lt;int&gt;&amp; height) {
+    int size = height.size();
+    int i, j;
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/android-learning/Android-Studio的logccat功能/" class="archive-article-date">
-  <time datetime="2016-03-20T04:52:03.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    if (size &lt;= 1) {
+        return 0;
+    }
+
+    unsigned int max_area, area;
+    int min_height;
+    max_area = 0;
+    for (i = 0; i &lt; size; i++) {
+        for (j = i + 1; j &lt; size; j++) {
+            min_height = (height[i]&lt;height[j]) ? height[i] : height[j];
+            area = (j - i)*min_height;
+            if (area &gt; max_area) {
+                max_area = area;
+            }
+        }
+    }
+    return max_area;
+}
+</code></pre><p>不过并没有通过测试，因为超时。<br>这一算法的时间复杂度是O(n^2),明显是一个比较糟糕的算法，下面对其进行改进。</p>
+<p><br></p>
+<h3 id="从两端收缩"><a href="#从两端收缩" class="headerlink" title="从两端收缩"></a>从两端收缩</h3><p>先贴上参考链接，后面补上。<br><a href="http://blog.csdn.net/a83610312/article/details/8548519" title="http://blog.csdn.net/a83610312/article/details/8548519" target="_blank" rel="external">Container with most water</a></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/android-learning/Android-Studio的logccat功能/">Android学习之&quot;Android Studio的logccat功能&quot;</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/" class="archive-article-date">
-  <time datetime="2016-03-19T17:05:52.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/">《怪物猎人X》太刀开荒心得</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/20/PS/简单水印的去除方法/" class="archive-article-date">
-  <time datetime="2016-03-19T16:54:39.000Z" itemprop="datePublished">Mar 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/20/PS/简单水印的去除方法/">简单水印的去除方法</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/19/杂谈/写在最开始的话/" class="archive-article-date">
-  <time datetime="2016-03-19T15:41:46.000Z" itemprop="datePublished">Mar 19</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/19/杂谈/写在最开始的话/">写在最开始的话</a>
-    </h1>
   
+    <a href="/2016/04/03/PS/选区/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PS学习之&quot;选区笔记&quot;</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/2016/03/">&laquo; Prev</a><a class="page-number" href="/archives/2016/03/">1</a><span class="page-number current">2</span>
-  </nav>
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Algorithm/Container-With-Most-Water" data-title="Container With Most Water" data-url="http://cncoffer.com/2016/04/06/Algorithm/Container-With-Most-Water/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
       </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
