@@ -11,10 +11,12 @@
 <meta property="og:url" content="http://cncoffer.com/2016/04/06/Algorithm/Container-With-Most-Water/index.html">
 <meta property="og:site_name" content="特立读行">
 <meta property="og:description" content="QuestionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Fin">
-<meta property="og:updated_time" content="2016-04-06T15:09:06.349Z">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/result.PNG">
+<meta property="og:updated_time" content="2016-04-07T14:39:33.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Container With Most Water">
 <meta name="twitter:description" content="QuestionGiven n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Fin">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/result.PNG">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -189,7 +191,57 @@
 }
 </code></pre><p>不过并没有通过测试，因为超时。<br>这一算法的时间复杂度是O(n^2),明显是一个比较糟糕的算法，下面对其进行改进。</p>
 <p><br></p>
-<h3 id="从两端收缩"><a href="#从两端收缩" class="headerlink" title="从两端收缩"></a>从两端收缩</h3><p>先贴上参考链接，后面补上。<br><a href="http://blog.csdn.net/a83610312/article/details/8548519" title="http://blog.csdn.net/a83610312/article/details/8548519" target="_blank" rel="external">Container with most water</a></p>
+<h3 id="从两端收缩"><a href="#从两端收缩" class="headerlink" title="从两端收缩"></a>从两端收缩</h3><p>主要是参考了csdn上的资料，我是真想不到这么好的方法。<br>原理如下：</p>
+<ol>
+<li>假设i,j之间的容器最大，即(i,a[i])和(j,a[j])组成的容器最大，那么有如下两条性质</li>
+<li>对于k,若k&gt;j,则a[k]<a[j].因为若a[k]>a[j],则a和k之间的容器必定比i和j之间的大。</a[j].因为若a[k]></li>
+<li>反之,若k&lt;i,则a[k]&lt;a[i].</li>
+<li>也就是说，从两边收缩，确定了端点x,y之后，比他们大的容器必定在[x,y]中，且a[max_left]&gt;=a[x]&amp;&amp;a[max_right]&gt;=a[y].</li>
+</ol>
+<p>因此可以确定从两端收缩，不停更新端点值的算法。再具体的说明可以查看参考资料。</p>
+<p>代码如下：</p>
+<pre><code>class Solution2
+{
+public:
+    Solution2();
+    ~Solution2();
+public:
+    int maxArea(vector&lt;int&gt; &amp;height) {
+        int res = 0;
+        int size = height.size();
+        int left = 0, right = size - 1;
+        while (left&lt;right)
+        {
+            res = max(res, min(height[left], height[right])*(right - left));
+            if (height[left]&lt;height[right]) // 从较低的边开始收缩
+            {
+                int k = left;
+                while (k&lt;right&amp;&amp;height[k] &lt;= height[left]) // 仅比较比两端高的边
+                    k++;
+                left = k;
+            }
+            else
+            {
+                int k = right;
+                while (k&gt;left&amp;&amp;height[k] &lt;= height[right]) // 仅比较比两端高的边
+                    k--;
+                right = k;
+            }
+        }
+        return res;
+    }
+private:
+    int min(int a, int b) {
+        return a &lt; b ? a : b;
+    }
+    int max(int a, int b) {
+        return a &gt; b ? a : b;
+    }
+};
+</code></pre><p>结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c/c++/result.PNG" alt="运行结果"></p>
+<p>时间复杂度降到了O(n),因为只会往里收缩，不会重新比较外面的边。</p>
+<hr>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="http://blog.csdn.net/a83610312/article/details/8548519" title="http://blog.csdn.net/a83610312/article/details/8548519" target="_blank" rel="external">Container with most water</a></p>
 
       
     </div>
