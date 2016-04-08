@@ -3,22 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>简单水印的去除方法 | 特立读行</title>
+  <title>Longest Common Prefix | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用美图秀秀去除简单的水印。">
+  <meta name="description" content="QuestionWrite a function to find the longest common prefix string amongst an array of strings.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单水印的去除方法">
-<meta property="og:url" content="http://cncoffer.com/2016/03/20/PS/简单水印的去除方法/index.html">
+<meta property="og:title" content="Longest Common Prefix">
+<meta property="og:url" content="http://cncoffer.com/2016/04/08/Algorithm/Longest-Common-Prefix/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="使用美图秀秀去除简单的水印。">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fyuantu.jpg">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fmeitu1.png">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95meitu2.png">
-<meta property="og:updated_time" content="2016-03-21T15:15:41.536Z">
+<meta property="og:description" content="QuestionWrite a function to find the longest common prefix string amongst an array of strings.">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/Longest%20Common%20Prefix%20result.PNG">
+<meta property="og:updated_time" content="2016-04-08T14:51:55.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单水印的去除方法">
-<meta name="twitter:description" content="使用美图秀秀去除简单的水印。">
-<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fyuantu.jpg">
+<meta name="twitter:title" content="Longest Common Prefix">
+<meta name="twitter:description" content="QuestionWrite a function to find the longest common prefix string amongst an array of strings.">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/Longest%20Common%20Prefix%20result.PNG">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -143,10 +141,10 @@
   
 </aside>
         
-        <section id="main"><article id="post-PS/简单水印的去除方法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Algorithm/Longest-Common-Prefix" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/20/PS/简单水印的去除方法/" class="article-date">
-  <time datetime="2016-03-19T16:54:39.000Z" itemprop="datePublished">2016-03-20</time>
+    <a href="/2016/04/08/Algorithm/Longest-Common-Prefix/" class="article-date">
+  <time datetime="2016-04-08T14:07:16.000Z" itemprop="datePublished">2016-04-08</time>
 </a>
     
   </div>
@@ -157,7 +155,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      简单水印的去除方法
+      Longest Common Prefix
     </h1>
   
 
@@ -165,23 +163,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用美图秀秀去除简单的水印。<br><a id="more"></a></p>
-<ol>
-<li><p>首先这是原图，可以看到左下角有一个百度百科的水印。<br><img src="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fyuantu.jpg" alt="原图"></p>
-</li>
-<li><p>接着打开<a href="http://xiuxiu.web.meitu.com/" title="美图秀秀网页版" target="_blank" rel="external">美图秀秀网页版</a>，在网页上打开上面这张图片，然后点击消除笔。<br><img src="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95%2Fmeitu1.png" alt="点击消除笔"></p>
-</li>
-<li><p>然后用消除笔涂抹有水印的地方，涂抹之后水印就会被去除了，反复涂抹效果也许会更好。<br>最后的对比如下:<br><img src="http://7xs254.com1.z0.glb.clouddn.com/%E7%AE%80%E5%8D%95%E6%B0%B4%E5%8D%B0%E7%9A%84%E5%8E%BB%E9%99%A4%E6%96%B9%E6%B3%95meitu2.png" alt="效果对比图"></p>
-</li>
-</ol>
-<p>是不是很简单，快动手试试吧-。-</p>
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>翻译：写一个函数，用于找出一组字符串的最长公共前缀。</p>
+<hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="暴力算法"><a href="#暴力算法" class="headerlink" title="暴力算法"></a>暴力算法</h3><p>首先想到的方法是从前两个字符串得到一个公共前缀，然后用得到的公共前缀一个一个向后比较更新，最后得到一个最长公共前缀。<br>时间复杂度应该为o(n*l),l is avg length of string.<br>代码如下：</p>
+<pre><code>class Solution
+{
+public:
+    Solution();
+    ~Solution();
+public:
+    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {
+        string longest_prefix;
+        int size = strs.size();
+
+        longest_prefix.clear();
+        if (size == 0) { // 排除不存在字符串和只存在一个字符串的特殊情况
+            return longest_prefix;
+        }
+        else if (size == 1) {
+            return strs[0];
+        }
+
+        longest_prefix = CommonPrefix(strs[0], strs[1]); // 先取前两个字符串的公共前缀作为比较对象
+        int i;
+        i = 2;
+        while (i &lt; size) {
+            longest_prefix = CommonPrefix(strs[i], longest_prefix); // 用公共前缀与每一个字符比较,并在比较的同时不停更新
+            i++;
+        }
+
+        return longest_prefix;
+    }
+private:
+    string CommonPrefix(string str1, string str2) { // 返回两个指定字符串的公共前缀
+        string prefix;
+        int str1_length, str2_length;
+
+        str1_length = str1.length();
+        str2_length = str2.length();
+
+        prefix.clear();
+        if (str1_length == 0 || str2_length == 0) { // 排除空字符串的情况
+            return prefix;
+        }
+
+        int index, length;
+        index = 0;
+        length = (str1_length &lt; str2_length) ? str1_length : str2_length; // 计算短字符串长度,这也是公共前缀的最大可能长度
+        while (index &lt; length) {
+            if (str1[index] != str2[index]) { // 若有字符不同,则返回
+                break;
+            }
+            index++;
+        }
+
+        return str1.substr(0, index); // 此时index指向的是不同的或超出长度的那个字符,因此这里返回的字串的字符个数(即长度)应当是index
+    }
+};
+</code></pre><p>结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c/c++/Longest%20Common%20Prefix%20result.PNG" alt="测试结果"></p>
+<p>可以看到o(n*l)的时间复杂度还是可以接受的了。</p>
+<p><br></p>
+<h3 id="暴力算法改进"><a href="#暴力算法改进" class="headerlink" title="暴力算法改进"></a>暴力算法改进</h3><p>然后想到比较的次数应当可以减少。</p>
+<blockquote>
+<p>比如对于有四个字符串的输入，a[0],a[1]比较，a[2],a[3]比较，然后得到的结果再比较，仅比较了3次，比上面的方法少了一次。</p>
+</blockquote>
+<p>上面说的这个改进几乎不能减少时间复杂度，还增加了编码的复杂度，是我想太多~~</p>
 
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS/">PS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
     </footer>
   </div>
@@ -189,19 +243,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/20/game/《怪物猎人X》太刀开荒心得/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          《怪物猎人X》太刀开荒心得
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/19/杂谈/写在最开始的话/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/07/music&video/关于孩子与爱的思考/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">写在最开始的话</div>
+      <div class="article-nav-title">感动与幽默兼备，推理与求真并进，《新参者》的味道很不错</div>
     </a>
   
 </nav>
@@ -212,7 +257,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-PS/简单水印的去除方法" data-title="简单水印的去除方法" data-url="http://cncoffer.com/2016/03/20/PS/简单水印的去除方法/"></div>
+  <div class="ds-thread" data-thread-key="post-Algorithm/Longest-Common-Prefix" data-title="Longest Common Prefix" data-url="http://cncoffer.com/2016/04/08/Algorithm/Longest-Common-Prefix/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
