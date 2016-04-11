@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>3Sum | 特立读行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="QuestionGiven an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+Note:
+
+Elements in a triplet (a,b,c)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3Sum">
+<meta property="og:url" content="http://cncoffer.com/2016/04/11/Algorithm/3Sum/index.html">
+<meta property="og:site_name" content="特立读行">
+<meta property="og:description" content="QuestionGiven an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+Note:
+
+Elements in a triplet (a,b,c)">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result1.PNG">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result2.PNG">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result3.PNG">
+<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-S1vsS3.PNG">
+<meta property="og:updated_time" content="2016-04-11T14:50:39.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3Sum">
+<meta name="twitter:description" content="QuestionGiven an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+Note:
+
+Elements in a triplet (a,b,c)">
+<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result1.PNG">
+  
+  <!-- % if (theme.favicon){ % -->
+    <!-- link rel="icon" href="/favicon.ico" -->
+  <!-- % } % -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">特立读行</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">26</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/11/Algorithm/3Sum/">3Sum</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/08/Algorithm/Longest-Common-Prefix/">Longest Common Prefix</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/07/music&video/关于孩子与爱的思考/">感动与幽默兼备，推理与求真并进，《新参者》的味道很不错</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/Algorithm/Container-With-Most-Water/">Container With Most Water</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/03/PS/选区/">PS学习之&quot;选区笔记&quot;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DS/">3DS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android学习/">Android学习</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐-影视/">音乐&影视</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/ppoffice/hexo-theme-alex">Alex</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-Algorithm/3Sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/11/Algorithm/3Sum/" class="article-date">
+  <time datetime="2016-04-11T11:24:05.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      3Sum
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+<p>Note:</p>
+<ul>
+<li>Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)</li>
+<li>The solution set must not contain duplicate triplets.</li>
+</ul>
+<pre><code>For example, given array S = {-1 0 1 2 -1 -4},
+A solution set is:
+(-1, 0, 1)
+(-1, -1, 2)
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>翻译：<br>  给定一有n个整数的数组S，S中是否有a,b,c三个元素满足a+b+c=0?找出所有和为0且不重复的三元组。<br>  提示：</p>
+<ul>
+<li>给出的三元组(a,b,c)必须满足非递减的顺序，如a ≤ b ≤ c</li>
+<li>结果集合不包含重复的三元组</li>
+</ul>
+<hr>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="O-n-2logn-算法"><a href="#O-n-2logn-算法" class="headerlink" title="O(n^2logn)算法"></a>O(n^2logn)算法</h3><p>因为要求和为0的三元组，因此当a和b确定后，可以直接从数组中查找是否有c，在排过序的数组中用二分查找复杂度是o(logn)，因此确立了第一种方法，先对数组排序，然后遍历所有a、b的组合，查找是否有c，若有c则记下结果，最后得到结果集合。<br>预期的时间复杂度为O(nlogn+n^2logn)=o(n^2*logn)<br>代码如下：</p>
+<pre><code>#pragma once
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+//#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+class Solution
+{
+public:
+    Solution();
+    ~Solution();
+#define NOT_FOUND -1 // 表示查找失败
+public:
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) {
+        vector&lt;vector&lt;int&gt;&gt; result;
+        int i, j;
+        int nums_size = nums.size();
+
+        result.clear();
+        if (nums_size &lt;= 2) { // 如果size &lt;= 2, 不可能有符合条件的三元组
+            return result;
+        }
+
+        sort(nums.begin(), nums.end()); // sort默认是从小到大排序，用的快排
+
+        int a, b, c;
+        //int flag;
+        i = 0; 
+        a = nums[0] + 1;
+        while (nums[i] &lt; 0 &amp;&amp; i &lt; nums_size) {
+            if (a != nums[i]) {
+                a = nums[i];
+                i++;
+            }
+            else {
+                i++;
+                continue;
+            }
+            j = nums_size - 1;
+            b = nums[nums_size - 1] - 1;
+            while (nums[j] &gt; 0 &amp;&amp; j &gt;= 0) {
+                if (b != nums[j]) {
+                    b = nums[j];
+                    j--;
+                }
+                else {
+                    j--;
+                    continue;
+                }
+
+                c = -a - b;
+                if (c &lt; a || c &gt; b) { // 若c在[a,b]范围之外则会带来重复，需排除
+                    continue;
+                }
+                else if (c == a || c == b) { // 若c与a或b相同，则查找c时需要找到两个c，否则其实是没有找到c
+                    if (find_some_num(c, nums, 2) != NOT_FOUND) { // 查找数组中是否有两个c
+                        result.push_back(order_result(a, b, c));
+                    }
+                }
+                else {
+                    if (find_some_num(c, nums, 1) != NOT_FOUND) { // 在数组中查找c
+                        result.push_back(order_result(a, b, c));
+                    }
+                }
+            }
+        }
+        if (find_some_num(0, nums, 3) != NOT_FOUND) { // 三数相同的情况仅(0,0,0)这一种
+            result.push_back(order_result(0, 0, 0));
+        }
+
+        return result;
+    }
+private:
+    int find_num(int c, vector&lt;int&gt;&amp; nums) { // 用二分法，在排序过的nums中查找c
+        int front, behind, mid;
+        front = 0;
+        behind = nums.size() - 1;
+        mid = -1;
+
+        while (front &lt;= behind) {
+            mid = (front + behind) / 2;
+            if (nums[mid] == c) {
+                return mid;
+            }
+            else if (nums[mid] &lt; c) {
+                front = mid + 1;
+            }
+            else {
+                behind = mid - 1;
+            }
+        }
+
+        return NOT_FOUND;
+    }
+
+    int find_some_num(int c, vector&lt;int&gt;&amp; nums, int total) {
+        int index = find_num(c, nums); // 首先调用二分法查找c
+        if (total == 1) { // 若只需找到一个c，则返回结果
+            return index;
+        }
+
+        int find_index, count;
+        find_index = index - 1;
+        count = 1;
+        while (find_index &gt;= 0) { // 若需要找到多个c，则从index-1开始向左查找c
+            if (nums[find_index] != c) {
+                break;
+            }
+            count++;
+            if (count &gt;= total) {
+                return count;
+            }
+            find_index--;
+        }
+        find_index = index + 1;
+        while (find_index &lt; nums.size()) { // 若需要找到多个c，则从index+1开始向左查找c
+            if (nums[find_index] != c) {
+                break;
+            }
+            count++;
+            if (count &gt;= total) {
+                return count;
+            }
+            find_index++;
+        }
+        return NOT_FOUND;
+    }
+
+    vector&lt;int&gt; order_result(int a, int b, int c) { // 对a、b、c排序，并返回vector变量
+        vector&lt;int&gt; result;
+
+        if (c &lt; a) {
+            result.push_back(c);
+            result.push_back(a);
+            result.push_back(b);
+        }
+        else if (c &gt; b) {
+            result.push_back(a);
+            result.push_back(b);
+            result.push_back(c);
+        }
+        else {
+            result.push_back(a);
+            result.push_back(c);
+            result.push_back(b);
+        }
+        return result;
+    }
+};
+</code></pre><p>测试结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result1.PNG" alt="测试结果"></p>
+<p>这结果看起来还可以的啦，但毕竟也要看看网上的大神是怎么做的呢？</p>
+<h3 id="O-n-2-算法"><a href="#O-n-2-算法" class="headerlink" title="O(n^2)算法"></a>O(n^2)算法</h3><p>思路是先排序，然后确定a，在寻找满足a+b+c=0的b和c。<br>a可以从小到大递增，这是一重循环。<br>在寻找b和c时，b、c从两端向中间靠拢，可以规定b&lt;=c（得到的结果自然是排好序的）。<br>另外在计算时，若a+b+c<0，则b递增，若>0,则c递减，这又是一重循环。<br>对比之下，我之前那样考虑各种特殊情况，还要对a、b、c进行排序的算法确实复杂的多。<br>代码如下：</0，则b递增，若></p>
+<pre><code>#pragma once
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+//#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+class Solution2
+{
+public:
+    Solution2();
+    ~Solution2();
+public:
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) {
+        int num_size = nums.size();
+        vector&lt;vector&lt;int&gt;&gt; result;
+
+        result.clear();
+        if (num_size &lt; 3) { // 排除数字不满3个的特殊情况
+            return result;
+        }
+
+        // 别忘记了排序
+        sort(nums.begin(), nums.end());
+
+        int sum;
+        int a, b, c;
+        for (a = 0; a &lt; num_size - 1; a++) {
+            if (a != 0 &amp;&amp; nums[a] == nums[a-1]) { // 跳过相等的a
+                continue;
+            }
+            b = a + 1;
+            c = num_size - 1;
+            while (b &lt; c) {
+                sum = nums[a] + nums[b] + nums[c];
+                if (sum == 0) {
+                    result.push_back(produce_vector(nums[a], nums[b], nums[c]));
+                    b++;
+                    c--;
+                    while (b &lt; c &amp;&amp; nums[b] == nums[b - 1]) { // 跳过相等的b
+                        b++;
+                    }
+                    while (c &gt; b &amp;&amp; nums[c] == nums[c + 1]) { // 跳过相等的c
+                        c--;
+                    }
+                }
+                else if (sum &gt; 0) {
+                    c--;
+                    while (c &gt; b &amp;&amp; nums[c] == nums[c + 1]) { // 跳过相等的c
+                        c--;
+                    }
+                }
+                else {
+                    b++;
+                    while (b &lt; c &amp;&amp; nums[b] == nums[b - 1]) { // 跳过相等的b
+                        b++;
+                    }
+                }
+            }
+        }
+        return result;
+
+    }
+    vector&lt;int&gt; produce_vector(int a, int b, int c) {
+        vector&lt;int&gt; result;
+        result.push_back(a);
+        result.push_back(b);
+        result.push_back(c);
+        return result;
+    }
+};
+</code></pre><p>测试结果：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result2.PNG" alt="测试结果"></p>
+<p>然而和我预期的不一样。代码是简洁了，测试结果并没有快，反而慢了一点点。<br>个人猜测是因为第一个算法中对正负号做了区分，a只在负数区遍历，b只在正数区遍历，因此O(n^2*logn)其实只有O((n/2)^2*logn)，而第二个算法中是实打实遍历，如果做一些优化可能会更好。<br>下面尝试对其进行优化。</p>
+<h3 id="优化的O-n-2-算法"><a href="#优化的O-n-2-算法" class="headerlink" title="优化的O(n^2)算法"></a>优化的O(n^2)算法</h3><p>对threeSum函数中的循环条件进行了修改，因为想要a+b+c=0，那最小数必须小于等于0，最大数必须大于等于0。这样可以减少a和c的遍历次数。<br>修改函数如下：</p>
+<pre><code>vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) {
+    int num_size = nums.size();
+    vector&lt;vector&lt;int&gt;&gt; result;
+
+    result.clear();
+    if (num_size &lt; 3) { // 排除数字不满3个的特殊情况
+        return result;
+    }
+
+    // 别忘记了排序
+    sort(nums.begin(), nums.end());
+
+    int sum;
+    int a, b, c;
+    for (a = 0; a &lt; num_size - 1 &amp;&amp; nums[a] &lt;= 0; a++) { // 想要和为0，最小的nums[a]必须小于等于0
+        if (a != 0 &amp;&amp; nums[a] == nums[a-1]) { // 跳过相等的a
+            continue;
+        }
+        b = a + 1;
+        c = num_size - 1;
+        while (b &lt; c &amp;&amp; nums[c] &gt;= 0) { // 想要和为0，最大的nums[c]必须大于等于0
+            sum = nums[a] + nums[b] + nums[c];
+            if (sum == 0) {
+                result.push_back(produce_vector(nums[a], nums[b], nums[c]));
+                b++;
+                c--;
+                while (b &lt; c &amp;&amp; nums[b] == nums[b - 1]) { // 跳过相等的b
+                    b++;
+                }
+                while (c &gt; b &amp;&amp; nums[c] == nums[c + 1]) { // 跳过相等的c
+                    c--;
+                }
+            }
+            else if (sum &gt; 0) {
+                c--;
+                while (c &gt; b &amp;&amp; nums[c] == nums[c + 1]) { // 跳过相等的c
+                    c--;
+                }
+            }
+            else {
+                b++;
+                while (b &lt; c &amp;&amp; nums[b] == nums[b - 1]) { // 跳过相等的b
+                    b++;
+                }
+            }
+        }
+    }
+    return result;
+
+}
+</code></pre><p>测试结果：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-result3.PNG" alt="测试结果"></p>
+<p>让人很意外啊，测试结果是60ms，和算法一的结果一样呢。难道说算法一的时间复杂度其实也是o(n^2)么？<br>不过60ms肯定是没有用大数来测试，下面就测试一下。</p>
+<h3 id="算法一和算法三的对比测试"><a href="#算法一和算法三的对比测试" class="headerlink" title="算法一和算法三的对比测试"></a>算法一和算法三的对比测试</h3><p>随机生成了大约1100个数，数字随机，且有少量重复，测试数据：</p>
+<pre><code>{ 256, -91, -143, -404, 538, 4, 58, -471, -160, 570, -301, 510, -326, 425, 29, 360, 495, 60, 150, 473, -300, -238, 427, -359, -100, 485, -308, -467,
+170, -362, -148, 342, -373, 109, -54, -260, 289, -391, -232, -376, 525, 140, -422, -103, -337, -469, 800, -161, -470, -340, -412, -76, -247, 232, 258, 249, -57,
+-286, -139, 605, -129, 308, 46, 376, 101, 80, 461, 311, 680, -334, 297, 591, -438, -420, 607, -371, 471, 327, 97, -168, 358, 304, -142, -497, 6, -313, 472, -251,
+-445, -459, -405, -360, 113, -298, -30, 436, -68, -35, -225, -369, -453, -395, 234, -416, 550, 35, 309, -220, -345, -100, 186, 740, -131, -414, -64, -182, 319,
+350, -360, -66, 121, -402, 103, -65, 135, -8, 620, -211, 23, 576, 571, 144, 133, 428, 251, 552, -475, 138, 563, -93, 223, -294, 316, 352, 335, 119, -167, 270,
+439, 158, -464, 238, -157, -230, -380, 432, -356, -306, -42, 516, 487, 184, -463, -269, -384, 506, -3, 280, -392, 146, 640, -433, -196, -50, -174, -171, 560,
+349, -408, -363, -367, -483, -243, 617, -195, -92, 393, 212, 45, -82, 287, -141, 120, 131, 532, -489, 197, 206, -482, -176, 334, 509, 459, 262, -28, 221, -484,
+286, 172, -152, 57, -115, -393, 403, 478, -114, -485, -429, 33, 320, -263, 417, -375, -241, 399, 489, 330, -248, -258, 283, 100, -280, 440, -70, 92, -155, -368,
+549, 534, -126, 277, -277, -60, -322, 11, -409, -427, -151, -314, 616, -420, -270, 546, 457, -312, -38, -374, 375, -240, 483, 583, -104, 395, 53, -382, -207,
+426, -208, 388, 242, 220, 271, -180, -381, -200, -321, -59, -406, 447, 720, 89, 498, -172, -227, -426, 419, 488, -260, 606, -205, -457, 96, 227, 585, -335, 382,
+411, 491, -1, -407, -220, -200, -87, 559, 572, -370, -46, 87, -13, -289, -304, 196, 70, -460, 329, 160, 429, 290, -400, 190, -213, -90, 260, 501, 416, 480, 12,
+780, -4, -179, 73, 136, 248, -479, 543, 422, 85, -480, 9, -323, -221, 504, 100, 332, 175, 321, 328, 421, -105, -347, -17, 467, -190, -372, 44, 303, 443, -175, 
+-331, 438, -481, -316, -192, -250, -357, 449, 156, 383, 118, 181, -448, 13, 530, 187, -278, 295, 600, 580, -496, -307, 111, 182, -31, -290, 360, 533, 575, 451,
+341, -275, 385, -110, -259, 177, 302, -156, -246, 225, -166, -296, 582, 348, 293, 143, -226, 79, -60, 166, -495, 245, 191, -224, 54, 278, 18, -297, -310, -72,
+603, -421, -500, -119, 593, 168, -320, 284, -121, 497, 153, 152, -49, -136, 201, 162, -153, 542, 536, 402, 356, -340, 453, 389, 599, -181, 596, -40, 260, 558,
+441, 174, 207, -385, 63, 219, 477, -353, 414, 523, -240, 386, -272, -350, -183, 134, -358, 147, 104, 202, 193, -191, 460, -107, 481, 2, 34, -324, -123, 528,
+137, 250, -34, 347, 527, 610, 486, 275, -287, -22, -458, -163, 412, -386, 254, 456, -162, -88, -394, -184, -431, -455, -245, 479, -320, 125, 322, -249, 539, 
+-67, -113, 81, -45, 502, -440, 545, -255, 454, 320, 587, -81, -436, -266, -352, -418, 27, 300, 47, 71, 344, 513, 500, -94, -188, -378, -449, -44, -43, -434, 
+269, 56, -137, -411, 373, -69, -292, 115, 74, -256, 579, -48, 547, 281, 326, 122, -500, 524, 226, -473, -291, 95, 26, -410, 91, 183, 25, 351, -262, -108, 86,
+448, -27, -24, 541, -472, 8, -111, -189, 367, 522, -283, 548, 243, 588, 211, 345, -20, -330, 84, 423, -487, 108, -223, -21, -117, 544, -75, 263, -52, 149, 222,
+164, 17, 230, 301, -204, 21, -73, 554, 531, 380, -164, 462, 401, -480, 505, -413, 517, 127, -222, 220, -396, -302, 557, -325, -231, -134, -379, -102, -40, 354,
+-343, 129, -146, 540, 93, -186, 407, 217, 180, 116, 581, -97, 355, 444, 1, 80, 404, 378, 123, -435, -361, 566, -398, 618, 195, 239, 372, 77, 159, -150, -41, 
+-476, -7, 333, -159, 39, 264, 465, -51, -329, -234, -80, -309, 52, 508, 361, 760, 553, 105, 140, -344, 390, 233, 526, -237, 189, -311, 188, -209, 204, 20, 59,
+237, 387, 460, 209, -265, -339, -461, -439, 408, 76, 157, 392, 608, 380, -20, 298, 210, -85, -165, 594, 600, 620, -364, 569, 366, 132, 161, 240, 229, -98, 406,
+619, -444, -264, -86, -12, 535, 0, -244, -399, 165, 240, 343, 68, -285, 107, 555, 228, -494, 306, -138, -252, -446, 440, -216, 512, 198, 55, 203, -355, -462,
+612, -254, 500, -193, 130, 145, -365, -147, 520, 494, -210, -442, 28, 82, -122, 280, 313, -173, -235, 41, 381, 246, 398, 241, 339, 272, 110, -328, 37, 142, 
+-132, 200, -284, 503, -214, 139, 43, 515, -47, 22, -465, 247, 194, 288, -169, -336, 474, -23, -74, 64, -456, -305, 357, -280, -133, -62, 176, 185, 338, 567,
+-342, 337, -428, -239, 48, -197, -242, 75, -419, -491, 415, -77, 437, 99, -203, 540, 299, 490, 521, 537, 368, 597, 148, -218, 365, -58, 580, 400, -351, -366, 
+323, 410, 507, 613, 450, 574, -279, 305, -124, 40, -346, -18, 442, -383, 141, 592, -267, -228, 518, -490, 274, 208, 14, -63, 463, 660, -215, -388, -389, -99,
+267, 602, -281, 213, 261, -425, 615, -233, -106, -25, 466, -140, -37, 519, -338, -170, 331, -56, 359, 24, -257, 61, -327, 377, 259, -79, 285, 445, -109, -116,
+-80, 364, 577, -9, -390, -201, -400, 38, -15, -135, -125, 452, 117, 94, -127, 362, -2, -423, -498, -219, 529, 154, 20, 214, -120, -437, 50, 493, 200, 568, 397,
+160, -454, -401, 573, -185, -387, 369, 15, -154, -441, -160, 458, -397, 253, -217, -349, 424, 192, 565, 291, 180, -112, -180, 564, 310, 30, -499, 112, 435, 469,
+65, 90, -118, 72, -468, 10, 167, 434, -492, 430, 300, 102, -341, 611, 88, 455, -333, -130, -96, 36, 418, 60, -89, 475, -16, -19, 3, 216, -194, -71, 420, 317, -488,
+-288, -36, 561, 279, 340, -198, -177, 266, 236, -5, 405, 396, 155, -29, 595, -424, 590, -95, 205, -83, 173, -55, 265, 171, 83, -39, 218, 336, 433, -229, -6, 598,
+394, -26, 315, -10, -432, 163, 589, 66, -120, -451, 268, 235, 292, 578, 353, -300, 282, 614, 514, -318, 179, -354, -274, 520, -144, 114, -466, -261, 484, 98, 370,
+120, 363, -145, 244, 7, 492, 296, -477, 374, -295, 470, -253, -493, -212, 126, 199, 32, -32, -417, -101, -315, 169, -199, 482, -33, -447, -158, -268, 476, 276, 
+551, 464, -178, 420, 312, -317, 468, -299, 294, -443, 413, -187, 400, -14, -11, 340, -282, 511, 49, -149, 609, 560, -78, 67, -450, 700, 151, 31, -276, -53, 40, 
+-440, -460, 584, 446, 318, 307, 178, -486, 5, 16, -474, 62, 124, -271, 215, 391, 106, -128, -415, 69, 42, 384, -452, 586, -303, -293, -380, -202, 19, -430, 346,
+-478, 409, 431, 128, 562, 496, 371, -140, 273, -61, 325, 604, 0, -273, -377, -332, 257, 601, 379, -319, 480, -403, -236, 252, 556, 324, 314, -348, 51, 224, -206,
+-84, 78, 499, 231, 255}
+</code></pre><p>统计运行时间：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c/c++/3Sum-S1vsS3.PNG" alt="算法一vs算法三"></p>
+<p>好吧，结果还是算法一略快，看来我自己造的车子还是不错的嘛~~<br>具体原因可能还是数据量不够大，logn和常数没太大区别，反而是算法一优化的比较好更快一点。我相信在数据量够大的情况下，算法三应该还是会快一些的，当然O(n^2)估计也算不了巨大的数据量。肯定还有更好的算法~</p>
+<p>参考资料：<br><a href="http://blog.csdn.net/ljiabin/article/details/40620579" title="http://blog.csdn.net/ljiabin/article/details/40620579" target="_blank" rel="external">【LeetCode】3Sum 解题报告</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/08/Algorithm/Longest-Common-Prefix/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Longest Common Prefix</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Algorithm/3Sum" data-title="3Sum" data-url="http://cncoffer.com/2016/04/11/Algorithm/3Sum/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'cncoffer'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+      </div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">特立读行</a>
+      &copy; 2016 Coffer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    <span id="busuanzi_container_site_pv">
+      Total <span id="busuanzi_value_site_pv"></span> views
+    </span>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
