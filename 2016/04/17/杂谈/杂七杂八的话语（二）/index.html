@@ -3,26 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Reverse Integer | 特立读行</title>
+  <title>杂七杂八的话语（二） | 特立读行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="QuestionReverse digits of an integer.反转整型数字。
-Example1: x = 123, return 321
-Example2: x = -123, return -321">
+  <meta name="description" content="看到有感觉的话就会记录下来，简单的整理一下，难得有那么点码字的欲望。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reverse Integer">
-<meta property="og:url" content="http://cncoffer.com/2016/03/26/Algorithm/Reverse-Integer/index.html">
+<meta property="og:title" content="杂七杂八的话语（二）">
+<meta property="og:url" content="http://cncoffer.com/2016/04/17/杂谈/杂七杂八的话语（二）/index.html">
 <meta property="og:site_name" content="特立读行">
-<meta property="og:description" content="QuestionReverse digits of an integer.反转整型数字。
-Example1: x = 123, return 321
-Example2: x = -123, return -321">
-<meta property="og:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%93%E6%9E%9C.png">
-<meta property="og:updated_time" content="2016-03-29T14:40:13.324Z">
+<meta property="og:description" content="看到有感觉的话就会记录下来，简单的整理一下，难得有那么点码字的欲望。">
+<meta property="og:updated_time" content="2016-04-17T12:53:57.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reverse Integer">
-<meta name="twitter:description" content="QuestionReverse digits of an integer.反转整型数字。
-Example1: x = 123, return 321
-Example2: x = -123, return -321">
-<meta name="twitter:image" content="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%93%E6%9E%9C.png">
+<meta name="twitter:title" content="杂七杂八的话语（二）">
+<meta name="twitter:description" content="看到有感觉的话就会记录下来，简单的整理一下，难得有那么点码字的欲望。">
   
   <!-- % if (theme.favicon){ % -->
     <!-- link rel="icon" href="/favicon.ico" -->
@@ -147,10 +139,10 @@ Example2: x = -123, return -321">
   
 </aside>
         
-        <section id="main"><article id="post-Algorithm/Reverse-Integer" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-杂谈/杂七杂八的话语（二）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/26/Algorithm/Reverse-Integer/" class="article-date">
-  <time datetime="2016-03-26T15:09:58.000Z" itemprop="datePublished">2016-03-26</time>
+    <a href="/2016/04/17/杂谈/杂七杂八的话语（二）/" class="article-date">
+  <time datetime="2016-04-17T11:56:35.000Z" itemprop="datePublished">2016-04-17</time>
 </a>
     
   </div>
@@ -161,7 +153,7 @@ Example2: x = -123, return -321">
         
   
     <h1 class="article-title" itemprop="name">
-      Reverse Integer
+      杂七杂八的话语（二）
     </h1>
   
 
@@ -169,58 +161,23 @@ Example2: x = -123, return -321">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Reverse digits of an integer.<br>反转整型数字。</p>
-<pre><code>Example1: x = 123, return 321
-Example2: x = -123, return -321
-</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>首先想到的是将x从个位开始，一个个取下来，然后一个个反序放入另一个int型变量。</p>
-<pre><code>y *= 10;
-y += x%10;
-x /= 10;
-</code></pre><p>如此不停循环，直到取完x的每一位数字。<br><strong>需要注意检查反转后是否溢出。</strong><br>代码如下：</p>
-<pre><code>#define NUMBER_TEN 10
-#define OVER_FLOW_LIMIT  214748364 // (INT_MAX / 10)
-int reverse(int x) {
-    int flag, result;
-
-    if (x &lt;= 9 &amp;&amp; x &gt;= -9) { // 若只有一位，则直接返回
-        return x;
-    }
-
-    if (x &lt; 0) { // 提取符号位
-        flag = -1;
-        x = -x;
-    }
-    else {
-        flag = 1;
-    }
-
-    result = 0;
-    while (x &gt; 0) {
-        if (result &gt; OVER_FLOW_LIMIT) { // 检测是否会溢出
-            return 0;
-        }
-        result *= NUMBER_TEN;
-        result += （x % NUMBER_TEN）;
-        x /= NUMBER_TEN;
-    }
-
-    return result * flag;
-}
-</code></pre><p>结果如下：<br><img src="http://7xs254.com1.z0.glb.clouddn.com/c%2Fc%2B%2B%2F%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%93%E6%9E%9C.png" alt="运行结果"></p>
-<p>看这个结果似乎还可以，不过感觉还是有可以改进的地方。算法复杂度是O(l)，l表示整数长度。</p>
-<p><br></p>
-<h3 id="题外话-方法二"><a href="#题外话-方法二" class="headerlink" title="题外话 !方法二"></a>题外话 !方法二</h3><p>接着我想到，是否能只在源数字变量x上进行变换呢？而这样是否有提高效率的办法呢？</p>
-<p>本来想考虑一下其他方法的，仔细思考了一下。好吧，我承认我傻了，针对这题，int型最大也就2^32，大约10个10进制位，O(l)的时间复杂度，这哪里还有深究算法的必要。</p>
-<p>不过长字符串倒是可以用这样的办法，应该能省下比较多的空间，但是字符串取字符又没有取十进制数字这么麻烦了，遇到再说吧~</p>
-<p>还是不纠结了-。-</p>
+        <p>看到有感觉的话就会记录下来，简单的整理一下，难得有那么点码字的欲望。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><hr>
+<p>上一篇写在我的网易博客上，懒得搬运过来了，链接如下：<br><a href="http://blog.163.com/explorer_coffer/blog/static/25875909820162601525982/" title="http://blog.163.com/explorer_coffer/blog/static/25875909820162601525982/" target="_blank" rel="external">杂七杂八的话语（一）</a></p>
+<h3 id="爱情，经得起风雨，但却熬不过平凡"><a href="#爱情，经得起风雨，但却熬不过平凡" class="headerlink" title="爱情，经得起风雨，但却熬不过平凡"></a>爱情，经得起风雨，但却熬不过平凡</h3><p>这是在电台节目《康定小情歌》中听到的，这档节目金句很多，但是整体就将情情爱爱，享受生活享受爱情，还隐含的表达了离婚次数多很骄傲的观点，和我的价值观不符。<br>不小心偏题了，这句话倒是很有趣，再一次提醒了我，<strong>时间是最强大的毒药。不光能够耗费青春，腐蚀梦想，还会一点点消磨爱情</strong>。所以，找到一个对的人，爱的人之后更要懂得互相珍重啊。</p>
+<hr>
+<h3 id="照片，记录下时光经过我们时的样子"><a href="#照片，记录下时光经过我们时的样子" class="headerlink" title="照片，记录下时光经过我们时的样子"></a>照片，记录下时光经过我们时的样子</h3><p>很有意思的一句话，虽然说没有多少道理，但是很有意思，这不就很值得记下来嘛。</p>
+<hr>
+<h3 id="python真的很重要"><a href="#python真的很重要" class="headerlink" title="python真的很重要"></a>python真的很重要</h3><p>这句话其实网上各种节奏啦，什么py是世界上最好的语言，c就是垃圾什么的。不过说到语言，个人感觉算法才是更加关键的地方，也就是所谓的鱼和渔的区别吧。py只是语言，只是一种工具，真正的核心不是语言，比较相同的功能用c用java肯定都能够实现，而且效率应当是比py更好的。差别就是在难易，兼容性等上吧。不过我没学过python，以上只是浅薄的个人观点。<br>但是话又说回来，多学点没错，既然做这一行，肯定有用到的一天。但是切记，贪多嚼不烂，要有真正精通的东西，这才是核心技术，才是涨工资的资本！</p>
+<hr>
+<h3 id="每一遍读书都有不同的感受"><a href="#每一遍读书都有不同的感受" class="headerlink" title="每一遍读书都有不同的感受"></a>每一遍读书都有不同的感受</h3><p>这是我写下《人生如题，各种痴》这篇博文时的一个感想。在每一遍读书的时候，可能我们的关注点不同，我们的年龄阅历不同，即使读的是同一本书也可以看到很多不同的东西。<br>就像我读到其中，“你究竟喜欢的是读书这件事情，还是读完所有书这件事情？”。这句时，以前完全体会不到其中的深意，但现在能感觉到很大的鼓舞，也许以后又会有不同的感受吧。</p>
 
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
 
     </footer>
   </div>
@@ -228,19 +185,19 @@ int reverse(int x) {
     
 <nav id="article-nav">
   
-    <a href="/2016/03/29/Algorithm/Palindrome-Number/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/17/reading/人生如题，各种痴/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Palindrome Number
+          人生如题，各种痴
         
       </div>
     </a>
   
   
-    <a href="/2016/03/26/杂谈/纸飞镖做书签/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/17/杂谈/深圳，再见/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">纸飞镖做书签</div>
+      <div class="article-nav-title">深圳，再见</div>
     </a>
   
 </nav>
@@ -251,7 +208,7 @@ int reverse(int x) {
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-Algorithm/Reverse-Integer" data-title="Reverse Integer" data-url="http://cncoffer.com/2016/03/26/Algorithm/Reverse-Integer/"></div>
+  <div class="ds-thread" data-thread-key="post-杂谈/杂七杂八的话语（二）" data-title="杂七杂八的话语（二）" data-url="http://cncoffer.com/2016/04/17/杂谈/杂七杂八的话语（二）/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
